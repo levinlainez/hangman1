@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="estilo.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link type="image/png" sizes="32x32" rel="icon" href="https://img.icons8.com/officel/40/suicide-risk.png">
+    <title>Ahorcados-Online</title>
+</head>
+<body>
+    
+       <!--Ejemplo hang man python: https://www.youtube.com/watch?v=_l-oQ0WQcjs-->
+    <main class="Contenido_principal ">
+
+        <div class="titulo animate__animated animate__pulse">
+            <p class="animate__animated 
+                      animate__pulse">HANGMAN
+                      <i class="fa-brands fa-docker fa-2xl animated-logo" style="color: #37556d;"></i>
+                      GAME</p>
+        </div>
+            
+        <div class="item1">
+            <div class="user">
+                <label for="txtusuario">Usuario:</label>
+                <input type="usuario" name="txtusuario" id="txtusuario" placeholder="usuario">
+            </div>
+            <div class="categoria">
+                <label for="txtcategoria">Categoría:</label>
+                <select name="txtcategoria" id="txtcategoria" required>
+                    <option value="" disabled selected>Elige su categoria</option>
+                    <option value="C1">Categoría 1</option>
+                    <option value="C2">Categoría 2</option>
+                    <option value="C3">Categoría 3</option>
+                    <option value="C4">Categoría 4</option>
+                </select>
+            </div>
+            <div class="nivel">
+                <label for="txtnivel">Nivel:</label>
+                <select name="txtnivel" id="txtnivel" required>
+                    <option value="" disabled selected>Elige nivel</option>
+                    <option value="N1">Facil</option>
+                    <option value="N2">Intermedio</option>
+                    <option value="N3">Dificil</option>
+                    <option value="N4">Ilimitado</option>
+                </select>
+            </div>
+            <div class="jugar">
+                <button type="button" name="btnjugar" id="btnjugar">Jugar</button>
+            </div>
+        </div>
+
+
+        
+        <div class="item2">
+            <button type="button" name="btntc" id="btntc">Tabla de clasificación</button>
+            <button type="button" name="btnap" id="btnap">Abandonar partida</button>
+            <button type="button" name="btnsalir" id="btnsalir">Salir</button>
+
+
+
+
+        </div>
+        <div class="item3">
+            <div class="asideleft">
+                <div class="acertado"><p>Palabras acertadas</p></div>
+                <div class="fallido"><p>Palabras Fallidas</p></div>
+            </div>
+            <div class="game">
+                <div class="topone">    
+                    <p>
+                        <i class="fa-solid fa-user"></i>
+                    </p>
+                    <p>
+                        <i class="fa-solid fa-icons"
+                         style="color: #df8509;"></i> 
+                        </p>
+
+                    <p> 
+                        <i class="fa-solid fa-heart fa-beat" style="color: #ee92da;">&nbsp;</i>
+                        <i class="fa-solid fa-heart fa-beat" style="color: #ee92da;">&nbsp;</i>
+                        <i class="fa-solid fa-heart fa-beat" style="color: #ee92da;">&nbsp;</i>
+                    </p>
+                    <p>
+                        <i class="fa-solid fa-trophy"
+                        style="color: #e7b70a;"></i>
+                    </p>  
+                </div>
+                <div class="figura">
+                    <img src="images/Stage4.png">
+                </div>
+
+
+                <div class="teclado"> </div>
+
+
+
+            </div>
+            <div class="asideright">
+                <div class="pista"><p><i class="fa-solid fa-lightbulb fa-xl
+                                                " style="color: #df8509;">:</i>
+                                    </p></div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <footer>
+
+    </footer>
+    <script src="function.js"></script>
+</body>
+</html>

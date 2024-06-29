@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="estilo.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/estilo.css' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
     rel="stylesheet"
@@ -90,7 +91,7 @@
                     </p>  
                 </div>
                 <div class="figura">
-                    <img src="images/Stage4.png">
+                    <img src="{% static 'images/Stage4.png' %}" alt="Hangman Stage">
                 </div>
 
 
@@ -112,6 +113,6 @@
     <footer>
 
     </footer>
-    <script src="function.js"></script>
+    <script src="{% static 'js/function.js' %}"></script>
 </body>
 </html>

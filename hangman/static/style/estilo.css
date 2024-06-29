@@ -46,7 +46,7 @@ body {
     background-position: center; 
     background-size: 1000px 250px;
     background-repeat: no-repeat;
-    background-image: url(..//imagen.png);
+    background-image: url(../images/imagen.png);
 }
 
 .Contenido_principal .item1{

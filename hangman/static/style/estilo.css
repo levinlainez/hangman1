@@ -37,7 +37,7 @@ body {
 
 .Contenido_principal .titulo{
     width:98%;
-    font-size: 20px;
+    font-size: 35px;
     padding: 55px 0px;
     margin-left: 10px;
     margin-right: 10px;
@@ -397,7 +397,7 @@ button:hover {
 
     .Contenido_principal .titulo {
         width: 97.2%;;
-        background-size: 800px 200px; 
+        background-size: 900px 250px; 
     }
     .acertado .fallido .pista{
         font-size: 16px;

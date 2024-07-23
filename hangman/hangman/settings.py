@@ -80,8 +80,12 @@ WSGI_APPLICATION = 'hangman.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'handman523',
+        'USER': 'brayan',
+        'PASSWORD': 'anubis523',
+        'HOST': '100.25.89.47',  
+        'PORT': '3306',  
     }
 }
 

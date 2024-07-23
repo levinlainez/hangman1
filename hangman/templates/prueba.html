@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Categoria List</title>
+</head>
+<body>
+    <h1>Categoria List</h1>
+    <ul>
+        {% for categoria in object_list %}
+            <li>
+                <a href="{% url 'categoria_List
+                ' Categoria%}">{{ categoria.nombreCate }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'categoria_create' %}">Add new categoria</a>
+</body>
+</html>

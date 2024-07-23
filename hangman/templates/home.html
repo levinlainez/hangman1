@@ -33,10 +33,9 @@
                 <label for="txtcategoria">Categoría:</label>
                 <select name="txtcategoria" id="txtcategoria" required>
                     <option value="" disabled selected>Elige su categoria</option>
-                    <option value="C1">Categoría 1</option>
-                    <option value="C2">Categoría 2</option>
-                    <option value="C3">Categoría 3</option>
-                    <option value="C4">Categoría 4</option>
+                    {% for categoria in categorias %}
+                    <option value="{{ categoria.id_categoria }}">{{ categoria.nombreCate }}</option>
+                {% endfor %}
                 </select>
             </div>
             <div class="nivel">

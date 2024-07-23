@@ -11,7 +11,8 @@ from .models import Intentos
 
 #no lo borres >:c
 def home(request):
-    return render(request, 'home.html')
+    categorias = Categoria.objects.all()  # Obtén todas las categorías
+    return render(request, 'home.html', {'categorias': categorias})
 
 # Vista para listar todas las categorías
 class CategoriaListView(ListView):

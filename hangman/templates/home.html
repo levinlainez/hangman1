@@ -42,10 +42,9 @@
                 <label for="txtnivel">Nivel:</label>
                 <select name="txtnivel" id="txtnivel" required>
                     <option value="" disabled selected>Elige nivel</option>
-                    <option value="N1">Facil</option>
-                    <option value="N2">Intermedio</option>
-                    <option value="N3">Dificil</option>
-                    <option value="N4">Ilimitado</option>
+                    {% for dificultad in dificultades %}
+                    <option value="{{ dificultad.nivelDificultad }}">{{ dificultad.nivelDificultad }}</option>
+                {% endfor %}
                 </select>
             </div>
             <div class="jugar">

@@ -12,7 +12,9 @@ from .models import Intentos
 #no lo borres >:c
 def home(request):
     categorias = Categoria.objects.all()  # Obtén todas las categorías
-    return render(request, 'home.html', {'categorias': categorias})
+    dificultades = Dificultad.objects.all()  # Obtén todos los niveles de dificultad
+    # Pasa ambos conjuntos de datos al contexto de la plantilla
+    return render(request, 'home.html', {'categorias': categorias, 'dificultades': dificultades})
 
 # Vista para listar todas las categorías
 class CategoriaListView(ListView):

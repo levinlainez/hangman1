@@ -25,3 +25,14 @@ function CrearTeclado() {
 
 CrearTeclado();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const Startbtn = document.querySelector('.btnjugar');
+    const overlaycompleto = document.querySelector('.overlay-container');
+    Startbtn.addEventListener('click', () => {
+        overlaycompleto.style.display = 'flex'; 
+       setTimeout(() => {
+            overlaycompleto.style.display = 'none';
+        }, 3000);
+    });
+  });

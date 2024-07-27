@@ -6,12 +6,13 @@ from .views import (
     PalabrasAhorcadoListView, PalabrasAhorcadoDetailView,
     PuntuacionesListView, PuntuacionesDetailView, PuntuacionesCreateView, PuntuacionesUpdateView,
     JuegoListView, JuegoDetailView, JuegoCreateView, JuegoUpdateView,CategoriaDeleteView,
-    IntentosListView, IntentosDetailView, IntentosCreateView, IntentosUpdateView,CategoriaCreateView,CategoriaCreateView
+    IntentosListView, IntentosDetailView, IntentosCreateView, IntentosUpdateView,CategoriaCreateView,CategoriaCreateView, obtener_pista,
 )
 
 urlpatterns = [
     path('', home, name='home'),
 
+    path('obtener_pista/', obtener_pista, name='obtener_pista'),
     path('Categoria/', CategoriaListView.as_view(), name='categoria_list'),
     path('Categoria/<int:pk>/', CategoriaDetailView.as_view(), name='categoria_detail'),
     path('Categoria/new/', CategoriaCreateView.as_view(), name='categoria_create'),
@@ -33,4 +34,5 @@ urlpatterns = [
     path('intentos/<int:pk>/', IntentosDetailView.as_view(), name='intentos_detail'),
     path('intentos/new/', IntentosCreateView.as_view(), name='intentos_create'),
     path('intentos/<int:pk>/edit/', IntentosUpdateView.as_view(), name='intentos_update'),
+
 ]

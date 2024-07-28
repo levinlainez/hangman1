@@ -252,43 +252,48 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función para proporcionar ayuda revelando una letra al azar
     const proporcionarAyuda = () => {
       if (ayudaUsada) {
-        alert("Ya has usado la au=yuda para esta palabra.");
-        return;
+          alert("Ya has usado la ayuda para esta palabra.");
+          return;
       }
-    
+
       // Encontrar letras que aún no han sido reveladas
       const letrasNoReveladas = [...APalabra].filter(
         (letra, index) => !LCorrectas.has(letra) && letra !== " "
-      );
-    
-      if (letrasNoReveladas.length === 0) {
+    );
+
+    if (letrasNoReveladas.length === 0) {
         alert("No hay más letras por revelar.");
         return;
-      }
+    }
     
       // Elegir una letra al azar
       const letraAleatoria =
-        letrasNoReveladas[Math.floor(Math.random() * letrasNoReveladas.length)];
+      letrasNoReveladas[Math.floor(Math.random() * letrasNoReveladas.length)];
     
       // Revelar la letra
       const letrasDisplay = palabradisplay.querySelectorAll(".letra");
       letrasDisplay.forEach((letraDisplay, index) => {
-        if (APalabra[index] === letraAleatoria) {
-          letraDisplay.innerText = letraAleatoria;
-          letraDisplay.classList.add("guessed");
-        }
+          if (APalabra[index] === letraAleatoria) {
+              letraDisplay.innerText = letraAleatoria;
+              letraDisplay.classList.add("guessed");
+          }
       });
-    
+  
       LCorrectas.add(letraAleatoria);
       ayudaUsada = true; // Marcar la ayuda como usada
     
       // Desactivar el botón correspondiente en el teclado
       const botonLetra = ContenedorLetras.querySelector(`button[data-letra="${letraAleatoria}"]`);
-      if (botonLetra) {
+    if (botonLetra) {
         botonLetra.disabled = true;
-      }
-    };
+    }
     
+    // Verificar si la palabra está completa
+    if (APalabra.split("").every((letra) => LCorrectas.has(letra))) {
+      GaOv(true);
+  }
+};
+
     // Inicializar el teclado y el juego
     CrearTeclado();
     btnJugar.addEventListener("click", () => {

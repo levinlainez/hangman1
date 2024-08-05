@@ -33,6 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
         overlaycompleto.style.display = 'flex'; 
        setTimeout(() => {
             overlaycompleto.style.display = 'none';
-        }, 3000);
+        }, 3000); 
     });
   });

@@ -15,6 +15,8 @@ class Dificultad(models.Model):
     def __str__(self):
         return self.nivelDificultad  # Devuelve el nivel de dificultad como representación en cadena del objeto
 
+
+
 # Modelo para la tabla 'puntuaciones'
 class Puntuaciones(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)  # Relación de clave foránea con la tabla 'categoria'
@@ -27,6 +29,10 @@ class PalabrasAhorcado(models.Model):
     dificultad = models.ForeignKey(Dificultad, on_delete=models.CASCADE)  # Relación de clave foránea con la tabla 'dificultad'
     palabras = models.CharField(max_length=100)  # Campo de texto para las palabras, longitud máxima de 100 caracteres
     pistas = models.CharField(max_length=100)  # Campo de texto para las pistas, longitud máxima de 100 caracteres
+    
+    def __str__(self):
+        return f"{self.palabras} - {self.pistas}"
+
 
 # Modelo para la tabla 'juego'
 class Juego(models.Model):

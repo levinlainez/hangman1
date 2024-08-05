@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import JsonResponse
+import random
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Categoria
@@ -13,8 +15,38 @@ from .models import Intentos
 def home(request):
     categorias = Categoria.objects.all()  # Obtén todas las categorías
     dificultades = Dificultad.objects.all()  # Obtén todos los niveles de dificultad
-    # Pasa ambos conjuntos de datos al contexto de la plantilla
-    return render(request, 'home.html', {'categorias': categorias, 'dificultades': dificultades})
+    palabras_ahorcado = PalabrasAhorcado.objects.all()  # Obtén todas las palabras del ahorcado
+    puntuaciones = Puntuaciones.objects.all()  # Obtén todas las puntuaciones
+    juegos = Juego.objects.all()  # Obtén todos los juegos
+    intentos = Intentos.objects.all()  # Obtén todos los intentos
+    # Pasa todos los conjuntos de datos al contexto de la plantilla
+    return render(request, 'home.html', {
+        'categorias': categorias,
+        'dificultades': dificultades,
+        'palabras_ahorcado': palabras_ahorcado,
+        'puntuaciones': puntuaciones,
+        'juegos': juegos,
+        'intentos': intentos
+    })
+
+def obtener_pista(request):
+    categoria_id = request.GET.get('categoria_id')
+    dificultad_id = request.GET.get('dificultad_id')
+    
+    # Obtén todas las palabras que coincidan con la categoría y dificultad seleccionadas
+    palabras_ahorcado = PalabrasAhorcado.objects.filter(categoria_id=categoria_id, dificultad_id=dificultad_id)
+    
+    if palabras_ahorcado.exists():
+        # Selecciona una pista aleatoria
+        pista_aleatoria = random.choice(palabras_ahorcado)
+        data = {'pista': pista_aleatoria.pistas,
+                'palabra': pista_aleatoria.palabras}
+    else:
+        data = {'pista': 'No se encontró ninguna pista.'}
+    
+    return JsonResponse(data)
+
+
 
 # Vista para listar todas las categorías
 class CategoriaListView(ListView):

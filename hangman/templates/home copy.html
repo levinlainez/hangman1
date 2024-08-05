@@ -41,20 +41,18 @@
                 <select name="txtnivel" id="txtnivel" required>
                     <option value="" disabled selected>Elige nivel</option>
                     {% for dificultad in dificultades %}
-<<<<<<< HEAD
-                    <option value="{{ dificultad.nivelDificultad }}">{{ dificultad.nivelDificultad }}</option>
-                {% endfor %}
-                </select> 
-=======
                     <option value="{{ dificultad.id }}">{{ dificultad.nivelDificultad }}</option>
                     {% endfor %}
                 </select>
->>>>>>> fdf9cb8b10d0a560477e97d0279898e5b4090ca0
             </div>
             <div class="jugar">
                 <button type="button" name="btnjugar" id="btnjugar">Jugar</button>
-              
             </div>
+        </div>
+        <div class="item2">
+            <button type="button" name="btntc" id="btntc">Tabla de clasificación</button>
+            <button type="button" name="btnap" id="btnap">Abandonar partida</button>
+            <button type="button" name="btnsalir" id="btnsalir">Salir</button>
         </div>
         <div class="item3">
             <div class="asideleft">
@@ -72,10 +70,10 @@
             <div class="game">
                 <div class="topone">
                     <p>
-                        <i class="fa-solid fa-user" style="color: #7c551e;"> <span id="usuario_nombre"></span></i>
+                        <i class="fa-solid fa-user" style="color: #7c551e;"> <span id="usuario_nombre">nose</span></i>
                     </p>
                     <p>
-                        <i title="Ayuda: muestra una letra al azar" class="fa-solid fa-icons" style="color: #7c551e;" id="ayuda"> <span id="cant_intentos"></span></i>
+                        <i class="fa-solid fa-icons" style="color: #7c551e;"></i>
                     </p>
                     <p>
                         <i class="fa-solid fa-heart fa-beat" style="color: #7c551e;">&nbsp;</i>
@@ -106,10 +104,10 @@
         <div class="Modal">
             <div class="overlay"></div>
             <div class="contenido">
-                <img>
+                <img src="Imagenes/perdio.gif" alt="gif">
                 <h4>Perdio</h4>
                 <p>la palabra era:</p>
-                <button class="again">Continuar</button>
+                <button class="again">Intertar de nuevo</button>
             </div>
         </div>
         <div class="overlay-container">

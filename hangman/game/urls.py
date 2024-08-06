@@ -10,7 +10,7 @@ from .views import (
 )
 
 urlpatterns = [
-    path('', home, name='home'),
+    path('game/', home, name='home'),
 
     path('obtener_pista/', obtener_pista, name='obtener_pista'),
     path('Categoria/', CategoriaListView.as_view(), name='categoria_list'),

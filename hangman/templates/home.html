@@ -16,17 +16,30 @@
 
 <body>
     <main class="Contenido_principal ">
+
+        <!--OverlayCompleto-->
+        <div class="overlay-container2">
+            <div class="overlay-content">
+                <img src="{% static 'images/Whale Docker GIF - Whale Docker Container - Discover & Share GIFs.gif' %}">
+                <p id="overlay-text"><i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i><br /><br />Loading game...
+                </p>
+            </div>
+        </div>
+
+
         <div class="titulo animate__animated animate__pulse">
             <p class="animate__animated animate__pulse">HANGMAN
                 <i class="fa-brands fa-docker fa-2xl animated-logo" style="color: #37556d;"></i>
                 GAME
             </p>
         </div>
+        </div>
         <div class="item1">
-            <div class="user">
+            <!--   <div class="user">
                 <label for="txtusuario">Usuario:</label>
                 <input type="usuario" name="txtusuario" id="txtusuario" placeholder="usuario">
             </div>
+            -->
             <div class="categoria">
                 <label for="txtcategoria">Categoría:</label>
                 <select name="txtcategoria" id="txtcategoria" required>
@@ -41,20 +54,17 @@
                 <select name="txtnivel" id="txtnivel" required>
                     <option value="" disabled selected>Elige nivel</option>
                     {% for dificultad in dificultades %}
-<<<<<<< HEAD
-                    <option value="{{ dificultad.nivelDificultad }}">{{ dificultad.nivelDificultad }}</option>
-                {% endfor %}
-                </select> 
-=======
                     <option value="{{ dificultad.id }}">{{ dificultad.nivelDificultad }}</option>
                     {% endfor %}
                 </select>
->>>>>>> fdf9cb8b10d0a560477e97d0279898e5b4090ca0
             </div>
             <div class="jugar">
                 <button type="button" name="btnjugar" id="btnjugar">Jugar</button>
-              
             </div>
+        </div>
+        <div class="item2">
+            <button type="button" name="btntc" id="btntc">Tabla de clasificación</button>
+            <button type="button" name="btnsalir" id="btnsalir">Salir</button>
         </div>
         <div class="item3">
             <div class="asideleft">
@@ -75,7 +85,8 @@
                         <i class="fa-solid fa-user" style="color: #7c551e;"> <span id="usuario_nombre"></span></i>
                     </p>
                     <p>
-                        <i title="Ayuda: muestra una letra al azar" class="fa-solid fa-icons" style="color: #7c551e;" id="ayuda"> <span id="cant_intentos"></span></i>
+                        <i title="Ayuda: muestra una letra al azar" class="fa-solid fa-icons" style="color: #7c551e;"
+                            id="ayuda"> <span id="cant_intentos"></span></i>
                     </p>
                     <p>
                         <i class="fa-solid fa-heart fa-beat" style="color: #7c551e;">&nbsp;</i>

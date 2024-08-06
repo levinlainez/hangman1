@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const fallidoDiv = document.getElementById("fallidos");
   const cantIntentos = document.getElementById("cant_intentos");
   const btnSalir = document.getElementById("btnsalir");
-  const overlaycompleto = document.querySelector('.overlay-container2');
 
   let APalabra = "",
     LIncorrectas = 0,
@@ -103,7 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("txtcategoria").value
       }, Dificultad ID: ${document.getElementById("txtnivel").value}`
     );
-
     fetch(
       `/obtener_pista/?categoria_id=${
         document.getElementById("txtcategoria").value
@@ -115,20 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Verificar si la palabra ya ha sido usada
         if (palabrasUsadas.has(APalabra)) {
-          // Contar cuántas palabras quedan por usar
-          if (palabrasUsadas.size >= data.total_palabras) {
-            // Mostrar mensaje y ofrecer reiniciar el juego si no hay más palabras disponibles
-            alert("No hay más palabras disponibles.");
-            const confirmar = confirm("¿Deseas reiniciar el juego?");
-            if (confirmar) {
-              palabrasUsadas.clear(); // Reiniciar el conjunto de palabras usadas
-              reiniciarJuego();
-            } else {
-              return;
-            }
-          } else {
-            return getRandomP(); // Intenta obtener una nueva palabra
-          }
+          return getRandomP(); // Intenta obtener una nueva palabra
         }
 
         palabrasUsadas.add(APalabra); // Añadir la nueva palabra al conjunto
@@ -329,11 +314,6 @@ document.addEventListener("DOMContentLoaded", () => {
   CrearTeclado();
 
   btnJugar.addEventListener("click", () => {
-
-    overlaycompleto.style.display = 'flex'; 
-     setTimeout(() => {
-          overlaycompleto.style.display = 'none';
-      }, 3000);
     getRandomP();
     // Cambiar el botón de jugar a abandonar partida
     btnJugar.textContent = "Abandonar partida";
@@ -349,4 +329,3 @@ document.addEventListener("DOMContentLoaded", () => {
   AgainBtn.addEventListener("click", getRandomP);
   ayudaIcon.addEventListener("click", proporcionarAyuda);
 });
-

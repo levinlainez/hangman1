@@ -47,7 +47,6 @@ def obtener_pista(request):
     return JsonResponse(data)
 
 
-
 # Vista para listar todas las categorías
 class CategoriaListView(ListView):
     model = Categoria

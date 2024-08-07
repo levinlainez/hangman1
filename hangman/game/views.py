@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 import random
+from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Categoria
@@ -33,18 +34,33 @@ def obtener_pista(request):
     categoria_id = request.GET.get('categoria_id')
     dificultad_id = request.GET.get('dificultad_id')
     
-    # Obtén todas las palabras que coincidan con la categoría y dificultad seleccionadas
     palabras_ahorcado = PalabrasAhorcado.objects.filter(categoria_id=categoria_id, dificultad_id=dificultad_id)
     
     if palabras_ahorcado.exists():
-        # Selecciona una pista aleatoria
-        pista_aleatoria = random.choice(palabras_ahorcado)
-        data = {'pista': pista_aleatoria.pistas,
-                'palabra': pista_aleatoria.palabras}
+        palabras_usadas = set(request.session.get('palabras_usadas', []))
+        palabras_disponibles = palabras_ahorcado.exclude(palabras__in=palabras_usadas)
+        
+        if palabras_disponibles.exists():
+            pista_aleatoria = random.choice(palabras_disponibles)
+            data = {'pista': pista_aleatoria.pistas, 'palabra': pista_aleatoria.palabras}
+            request.session['palabras_usadas'] = list(palabras_usadas.union({pista_aleatoria.palabras}))
+        else:
+            data = {'pista': 'No hay más palabras disponibles.', 'palabra': None}
     else:
-        data = {'pista': 'No se encontró ninguna pista.'}
+        data = {'pista': 'No se encontró ninguna pista.', 'palabra': None}
     
     return JsonResponse(data)
+
+
+@csrf_exempt
+def reset_palabras_usadas(request):
+    if request.method == 'POST':
+        request.session['palabras_usadas'] = []  # Reiniciar la lista de palabras usadas
+        return JsonResponse({'success': True})
+    return JsonResponse({'success': False}, status=400)
+
+
+
 
 
 # Vista para listar todas las categorías

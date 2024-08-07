@@ -160,7 +160,8 @@ body {
 
 .item2 #btntc,
 .item2 #btnap,
-.item2 #btnsalir {
+.item2 #btnsalir,
+.item2 #ayuda {
   width: 250px;
   font-size: 13px;
   cursor: pointer;
@@ -174,7 +175,8 @@ body {
 
 .item2 #btntc:hover,
 .item2 #btnap:hover,
-.item2 #btnsalir:hover {
+.item2 #btnsalir:hover,
+.item2 #ayuda:hover {
   width: 250px;
   transform: translateY(2px);
   background-color: #ffbcf48a;
@@ -368,7 +370,8 @@ button:hover {
   .item1 #btnjugar,
   .item2 #btntc,
   .item2 #btnap,
-  .item2 #btnsalir {
+  .item2 #btnsalir,
+  .item2 #ayuda {
     width: 200px;
   }
 
@@ -408,14 +411,16 @@ button:hover {
   .item1 #btnjugar,
   .item2 #btntc,
   .item2 #btnap,
-  .item2 #btnsalir {
+  .item2 #btnsalir,
+  .item2 #ayuda {
     width: 180px;
     font-size: 13px;
   }
 
   .item2 #btntc:hover,
   .item2 #btnap:hover,
-  .item2 #btnsalir:hover {
+  .item2 #btnsalir:hover,
+  .item2 #ayuda:hover {
     width: 180px;
     transform: translateY(2px);
   }
@@ -467,14 +472,16 @@ button:hover {
   .item1 #btnjugar,
   .item2 #btntc,
   .item2 #btnap,
-  .item2 #btnsalir {
+  .item2 #btnsalir,
+  .item2 #ayuda {
     width: 170px;
     font-size: 12px;
   }
 
   .item2 #btntc:hover,
   .item2 #btnap:hover,
-  .item2 #btnsalir:hover {
+  .item2 #btnsalir:hover,
+  .item2 #ayuda:hover {
     width: 170px;
     transform: translateY(2px);
   }
@@ -534,14 +541,16 @@ button:hover {
   .item1 #btnjugar,
   .item2 #btntc,
   .item2 #btnap,
-  .item2 #btnsalir {
+  .item2 #btnsalir,
+  .item2 #ayuda {
     width: 150px;
     font-size: 11px;
   }
 
   .item2 #btntc:hover,
   .item2 #btnap:hover,
-  .item2 #btnsalir:hover {
+  .item2 #btnsalir:hover,
+  .item2 #ayuda:hover {
     width: 150px;
     transform: translateY(2px);
   }
@@ -702,3 +711,89 @@ button:hover {
 }
 
 
+
+#mensajeCompleto {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Fondo más oscuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#mensajeCompleto .modal-content {
+  background: #fff;
+  color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 80%;
+}
+
+#mensajeCompleto p {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+#mensajeCompleto button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#mensajeCompleto button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+
+
+.overlay-container2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d4e6ed;
+  z-index: 1000;
+  pointer-events: none;
+  display: none;
+  overflow: hidden;
+}
+
+
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ooverlay-container2 img {
+  margin-left: 40px;
+  width: 50%;
+  margin-bottom: 5px; 
+}
+
+.overlay-container2 p {
+  text-align: center;
+  font-size: 20px;
+  color:rgba(8, 46, 218, 0.692);
+  margin: 0;
+}

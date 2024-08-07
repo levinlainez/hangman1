@@ -6,13 +6,14 @@ from .views import (
     PalabrasAhorcadoListView, PalabrasAhorcadoDetailView,
     PuntuacionesListView, PuntuacionesDetailView, PuntuacionesCreateView, PuntuacionesUpdateView,
     JuegoListView, JuegoDetailView, JuegoCreateView, JuegoUpdateView,CategoriaDeleteView,
-    IntentosListView, IntentosDetailView, IntentosCreateView, IntentosUpdateView,CategoriaCreateView,CategoriaCreateView, obtener_pista,
+    IntentosListView, IntentosDetailView, IntentosCreateView, IntentosUpdateView,CategoriaCreateView,CategoriaCreateView, obtener_pista,reset_palabras_usadas
 )
 
 urlpatterns = [
     path('game/', home, name='home'),
 
     path('obtener_pista/', obtener_pista, name='obtener_pista'),
+     path('reset_palabras_usadas/', reset_palabras_usadas, name='reset_palabras_usadas'),
     path('Categoria/', CategoriaListView.as_view(), name='categoria_list'),
     path('Categoria/<int:pk>/', CategoriaDetailView.as_view(), name='categoria_detail'),
     path('Categoria/new/', CategoriaCreateView.as_view(), name='categoria_create'),

@@ -1,3 +1,19 @@
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          // Si esta cookie comienza con el nombre que buscamos, devuélvelo
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+          }
+      }
+  }
+  return cookieValue;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // Variables y elementos del DOM
   const btnJugar = document.getElementById("btnjugar");
@@ -103,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("txtcategoria").value
       }, Dificultad ID: ${document.getElementById("txtnivel").value}`
     );
-
+  
     fetch(
       `/obtener_pista/?categoria_id=${
         document.getElementById("txtcategoria").value
@@ -111,34 +127,36 @@ document.addEventListener("DOMContentLoaded", () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        APalabra = data.palabra.toUpperCase(); // Convertir palabra a mayúsculas
-
-        // Verificar si la palabra ya ha sido usada
-        if (palabrasUsadas.has(APalabra)) {
-          // Contar cuántas palabras quedan por usar
-          if (palabrasUsadas.size >= data.total_palabras) {
-            // Mostrar mensaje y ofrecer reiniciar el juego si no hay más palabras disponibles
-            alert("No hay más palabras disponibles.");
-            const confirmar = confirm("¿Deseas reiniciar el juego?");
-            if (confirmar) {
-              palabrasUsadas.clear(); // Reiniciar el conjunto de palabras usadas
-              reiniciarJuego();
-            } else {
-              return;
-            }
-          } else {
-            return getRandomP(); // Intenta obtener una nueva palabra
-          }
+        if (data.palabra === null) {
+          // Mostrar mensaje modal si no hay más palabras disponibles
+          const mensajeCompleto = document.getElementById('mensajeCompleto');
+          mensajeCompleto.style.display = 'flex'; // Cambiar a 'flex' para centrar el contenido
+          
+          // Configurar el contenido del modal
+          mensajeCompleto.innerHTML = `
+            <div class="modal-content">
+              <p>Ya has descubierto todas las palabras.</p>
+              <button id="reiniciarJuego">Continua Jugando</button>
+            </div>
+          `;
+  
+          // Añadir evento al botón de reiniciar el juego
+          document.getElementById('reiniciarJuego').addEventListener('click', () => {
+            palabrasUsadas.clear(); // Reiniciar el conjunto de palabras usadas
+            mensajeCompleto.style.display = 'none'; // Ocultar el modal
+            location.reload();
+          });
+        } else {
+          APalabra = data.palabra.toUpperCase(); // Convertir palabra a mayúsculas
+          Pista.textContent = data.pista;
+          resetGame();
+          resetButtons();
         }
-
-        palabrasUsadas.add(APalabra); // Añadir la nueva palabra al conjunto
-        Pista.textContent = data.pista;
-        resetGame();
-        resetButtons();
       })
       .catch((error) => console.error("Error:", error));
   };
-
+  
+  
   // Función para manejar el botón de intentar de nuevo
   const againButtonHandler = () => {
     Modal.classList.remove("show");
@@ -329,24 +347,42 @@ document.addEventListener("DOMContentLoaded", () => {
   CrearTeclado();
 
   btnJugar.addEventListener("click", () => {
-
-    overlaycompleto.style.display = 'flex'; 
-     setTimeout(() => {
+    // Limpiar palabras usadas de la sesión al comenzar una nueva partida
+    fetch('/reset_palabras_usadas/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCookie('csrftoken')  // Obtener el CSRF token usando la función getCookie
+      }
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error al resetear las palabras usadas');
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.success) {
+        overlaycompleto.style.display = 'flex'; 
+        setTimeout(() => {
           overlaycompleto.style.display = 'none';
-      }, 3000);
-    getRandomP();
-    // Cambiar el botón de jugar a abandonar partida
-    btnJugar.textContent = "Abandonar partida";
-    btnJugar.removeEventListener("click", () => {
-      getRandomP();
-    });
-    btnJugar.addEventListener("click", abandonarPartida);
+        }, 3000);
+        getRandomP();
+        // Cambiar el botón de jugar a abandonar partida
+        btnJugar.textContent = "Abandonar partida";
+        btnJugar.removeEventListener("click", () => {
+          getRandomP();
+        });
+        btnJugar.addEventListener("click", abandonarPartida);
 
-    // Bloquear los selectores de dificultad
-    bloquearSelectores(true);
+        // Bloquear los selectores de dificultad
+        bloquearSelectores(true);
+      } else {
+        console.error('No se pudieron resetear las palabras usadas');
+      }
+    })
+    .catch(error => console.error('Error:', error));
   });
-
   AgainBtn.addEventListener("click", getRandomP);
   ayudaIcon.addEventListener("click", proporcionarAyuda);
 });
-

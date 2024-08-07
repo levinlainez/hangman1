@@ -16,7 +16,6 @@
 
 <body>
     <main class="Contenido_principal ">
-
         <!--OverlayCompleto-->
         <div class="overlay-container2">
             <div class="overlay-content">
@@ -25,7 +24,6 @@
                 </p>
             </div>
         </div>
-
 
         <div class="titulo animate__animated animate__pulse">
             <p class="animate__animated animate__pulse">HANGMAN
@@ -64,6 +62,7 @@
         </div>
         <div class="item2">
             <button type="button" name="btntc" id="btntc">Tabla de clasificación</button>
+            <button type="button" name="btnayuda" id="ayuda">Ayuda</button>
             <button type="button" name="btnsalir" id="btnsalir">Salir</button>
         </div>
         <div class="item3">
@@ -86,7 +85,7 @@
                     </p>
                     <p>
                         <i title="Ayuda: muestra una letra al azar" class="fa-solid fa-icons" style="color: #7c551e;"
-                            id="ayuda"> <span id="cant_intentos"></span></i>
+                            > <span id="cant_intentos"></span></i>
                     </p>
                     <p>
                         <i class="fa-solid fa-heart fa-beat" style="color: #7c551e;">&nbsp;</i>
@@ -127,6 +126,7 @@
 
             <p id="overlay-text">Cargando... ¿como vas a perder? ._.</p>
         </div>
+        <div id="mensajeCompleto" style="display: none;"></div>
 
         <script src="{% static 'js/function.js' %}"></script>
 

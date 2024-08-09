@@ -50,6 +50,14 @@ class Intentos(models.Model):
     es_correcto = models.BooleanField()  # Campo booleano para indicar si el intento fue correcto
     fecha_intento = models.DateTimeField(auto_now_add=True)  # Campo de fecha y hora para el intento, se añade automáticamente
 
+class Usuario(models.Model):
+    id = models.AutoField
+    usuario = models.CharField(max_length=150, unique=True)
+    contrasena = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.usuario
+
 import mysql.connector
 from mysql.connector import Error
 

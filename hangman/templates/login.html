@@ -90,8 +90,8 @@
                 <input type="text" id="registro-usuario" placeholder="Introduce tu usuario">
             </div>
             <div class="form-group">
-                <label for="regsitro-contra">Contraseña</label>
-                <input type="password" id="regsitro-contra" placeholder="Introduce tu contraseña">
+                <label for="registro-contra">Contraseña</label>
+                <input type="password" id="registro-contra" placeholder="Introduce tu contraseña">
             </div>
             <div class="form-group">
                 <button onclick="register()">Regístrate</button>
@@ -112,11 +112,10 @@
             document.getElementById('register-form').style.display = 'none';
             document.getElementById('login-form').style.display = 'block';
         }
-
         function login() {
             const usuario = document.getElementById('usuario').value;
             const password = document.getElementById('login-password').value;
-
+        
             fetch('/login/', {
                 method: 'POST',
                 headers: {
@@ -129,7 +128,7 @@
             .then(data => {
                 if (data.success) {
                     alert('Inicio de sesión exitoso');
-                    // Redirige o maneja el inicio de sesión exitoso
+                    window.location.href = data.redirect_url;  // Redirige usando la URL recibida del backend
                 } else {
                     alert('Error al iniciar sesión: ' + data.message);
                 }
@@ -139,8 +138,8 @@
 
         function register() {
             const usuario = document.getElementById('registro-usuario').value;
-            const password = document.getElementById('regsitro-contra').value;
-
+            const password = document.getElementById('registro-contra').value;
+        
             fetch('/register/', {
                 method: 'POST',
                 headers: {
@@ -153,7 +152,7 @@
             .then(data => {
                 if (data.success) {
                     alert('Registro exitoso');
-                    // Redirige o maneja el registro exitoso
+                    showLoginForm();  // Muestra el formulario de login después del registro
                 } else {
                     alert('Error al registrarse: ' + data.message);
                 }

@@ -1,6 +1,10 @@
-from django.shortcuts import render
-from django.http import JsonResponse
+import json
+from django.shortcuts import render, redirect
+from django.http import JsonResponse, HttpResponseRedirect
 import random
+from .forms import RegistroForm, LoginForm
+from django.contrib.auth import authenticate, login
+from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -10,6 +14,7 @@ from .models import PalabrasAhorcado
 from .models import Puntuaciones
 from .models import Juego
 from .models import Intentos
+from .models import Usuario
 
 
 #no lo borres >:c
@@ -199,8 +204,35 @@ class IntentosUpdateView(UpdateView):
 
 
 
+def register(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            usuario = data.get('usuario')
+            contrasena = data.get('password')
+            if Usuario.objects.filter(usuario=usuario).exists():
+                return JsonResponse({'success': False, 'message': 'El usuario ya existe.'})
+            nuevo_usuario = Usuario(usuario=usuario, contrasena=contrasena)
+            nuevo_usuario.save()
+            return JsonResponse({'success': True, 'redirect_url': reverse('login')})  # Enviar URL de redirección
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': str(e)})
+    return JsonResponse({'success': False, 'message': 'Método no permitido'})
 
-
+@csrf_exempt
+def login(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            usuario = data.get('usuario')
+            contrasena = data.get('password')
+            user = Usuario.objects.filter(usuario=usuario, contrasena=contrasena).first()
+            if user:
+                return JsonResponse({'success': True, 'redirect_url': reverse('home')})
+            return JsonResponse({'success': False, 'message': 'Credenciales inválidas.'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': str(e)})
+    return JsonResponse({'success': False, 'message': 'Método no permitido'})
 
 
 # Vista para crear una nueva categoría

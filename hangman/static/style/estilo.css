@@ -30,7 +30,8 @@ body {
 .Contenido_principal {
   width: 100%;
   display: grid;
-  margin-top: 100px;
+  margin-top: -10px;
+
   grid-template-rows: repeat(4, 0.2fr);
 }
 
@@ -52,29 +53,28 @@ body {
   gap: 100px;
   width: 98%;
   display: grid;
-  padding: 10px;
+  padding: 10px 270px;
   margin-left: 10px;
   margin-right: 10px;
   align-items: center;
   align-content: center;
   border-radius: 10px;
   border: 1px solid rgb(173, 114, 65);
-  grid-template-columns: 5fr 5fr 5fr 5fr;
+  grid-template-columns: repeat(3, 5fr);
   background-color: rgba(243, 185, 109, 0.349);
 }
 
+
 .item1 #txtcategoria,
 .item1 #txtnivel,
-.item1 #txtusuario,
 .item1 #btnjugar {
   width: 100%;
-  width: 210px;
+  width: 190px;
   font-size: 13px;
 }
 
 .item1 #txtcategoria,
-.item1 #txtnivel,
-.item1 #txtusuario {
+.item1 #txtnivel{
   padding: 3px;
   border-radius: 5px;
   border-color: white;
@@ -129,7 +129,7 @@ body {
 }
 
 .Contenido_principal .item2 {
-  gap: 20px;
+  gap: 0px;
   width: 90%;
   display: grid;
   margin: 10px 80px;
@@ -137,7 +137,7 @@ body {
   align-items: center;
   border-radius: 10px;
   align-content: center;
-  grid-template-columns: repeat(3, 5fr);
+  grid-template-columns: repeat(2, 1fr);
   border: 1px solid rgb(173, 114, 65);
   background-color: rgba(243, 185, 109, 0.349);
 }
@@ -158,8 +158,14 @@ body {
   background-color: #ffbcf48a;
 }
 
-.item2 #btntc,
-.item2 #btnap,
+.item2 #ayuda{
+  margin-left: 180px;
+}
+
+.item2 #btnsalir{
+  margin-left:40px;
+}
+
 .item2 #btnsalir,
 .item2 #ayuda {
   width: 250px;
@@ -173,7 +179,7 @@ body {
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.item2 #btntc:hover,
+
 .item2 #btnap:hover,
 .item2 #btnsalir:hover,
 .item2 #ayuda:hover {
@@ -189,7 +195,6 @@ body {
   margin-left: 5px;
   margin-bottom: -50px;
   border-radius: 10px;
-
   justify-content: space-between;
   border: 1px solid rgb(173, 114, 65);
 }
@@ -197,6 +202,7 @@ body {
 .game {
   flex: 3;
   height: 150;
+  
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -211,6 +217,11 @@ body {
   align-content: center;
 }
 
+.puntos1, #cant_intentos{
+  font-size: 18px;
+  align-content: space-between;
+}
+
 .topone {
   width: 100%;
   gap: 10px;
@@ -218,18 +229,20 @@ body {
   padding: 10px;
   font-size: 21px;
   box-sizing: border-box;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   border: 1px solid rgb(173, 114, 65);
   background-color: rgba(243, 185, 109, 0.349);
 }
 
 .figura {
   width: 90%;
-  padding: 250px;
+  padding-top: 185px !important;
+  padding: 200px 250px;
   margin-top: 10px;
   margin-bottom: 10px;
   border: 1px solid rgb(173, 114, 65);
 }
+
 .teclado {
   gap: 10px;
   width: 90%;
@@ -325,7 +338,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #d4e6ed;
+  background-color:#d4eef4;
   z-index: 1000;
   pointer-events: none;
   display: none;
@@ -355,7 +368,8 @@ button:hover {
 /**media y demás*/
 @media screen and (max-width: 1500px) {
   .Contenido_principal {
-    margin-top: 50px;
+    margin-top: 200px;
+
   }
 
   .Contenido_principal .item1,
@@ -368,7 +382,6 @@ button:hover {
   .item1 #txtnivel,
   .item1 #txtusuario,
   .item1 #btnjugar,
-  .item2 #btntc,
   .item2 #btnap,
   .item2 #btnsalir,
   .item2 #ayuda {
@@ -386,12 +399,13 @@ button:hover {
 
 @media screen and (max-width: 1400px) {
   .Contenido_principal {
-    margin-top: 120px;
+    margin-top: 180px;
   }
   .Contenido_principal .item1 {
     width: 95%;
-    margin: 0 25px;
+    margin: 0 27px;
     margin-bottom: 10px;
+    padding-left: 360px;
   }
   .Contenido_principal .item2 {
     width: 90%;
@@ -404,12 +418,15 @@ button:hover {
   }
 
   .item1 #txtcategoria,
-  .item1 #txtnivel,
-  .item1 #txtusuario {
+  .item1 #txtnivel{
+
     width: 140px;
   }
+
+  .item1 #btnjugar{
+    margin-left: -64px;
+  }
   .item1 #btnjugar,
-  .item2 #btntc,
   .item2 #btnap,
   .item2 #btnsalir,
   .item2 #ayuda {
@@ -417,7 +434,6 @@ button:hover {
     font-size: 13px;
   }
 
-  .item2 #btntc:hover,
   .item2 #btnap:hover,
   .item2 #btnsalir:hover,
   .item2 #ayuda:hover {
@@ -425,7 +441,8 @@ button:hover {
     transform: translateY(2px);
   }
   .item1 label {
-    font-size: 16px;
+    font-size: 13px;
+    margin-left: -60px;
   }
   .topone {
     padding: 10px;
@@ -449,12 +466,12 @@ button:hover {
 
 @media screen and (max-width: 1350px) and (min-width: 800px) {
   .Contenido_principal {
-    margin-top: 124px;
+    margin-top: 200px;
   }
 
   .Contenido_principal .item1 {
     width: 96%;
-    margin: 0 25px;
+    margin: 20px 25px;
     margin-bottom: 10px;
   }
   .Contenido_principal .item2 {
@@ -470,7 +487,7 @@ button:hover {
   }
 
   .item1 #btnjugar,
-  .item2 #btntc,
+
   .item2 #btnap,
   .item2 #btnsalir,
   .item2 #ayuda {
@@ -478,7 +495,6 @@ button:hover {
     font-size: 12px;
   }
 
-  .item2 #btntc:hover,
   .item2 #btnap:hover,
   .item2 #btnsalir:hover,
   .item2 #ayuda:hover {
@@ -517,14 +533,20 @@ button:hover {
 
 @media screen and (max-width: 800px) {
   .Contenido_principal {
-    margin-top: 25px;
+    margin-top: 150px;
   }
 
   .Contenido_principal .titulo {
     width: 95%;
   }
 
-  .Contenido_principal .item1,
+  .Contenido_principal .item1{
+    width: 90%;
+    margin: 0 10px;
+    margin-bottom: 10px;
+    gap: 10px;
+    padding-left: 295px;
+  }
   .Contenido_principal .item2 {
     width: 90%;
     margin: 0 10px;
@@ -532,14 +554,19 @@ button:hover {
     gap: 10px;
   }
 
-  .item1 #txtcategoria,
-  .item1 #txtnivel,
-  .item1 #txtusuario {
+  .item1 #txtcategoria{
     width: 120px;
+    font-size: 11px;
+    margin-right: 80px;
+  }
+  .item1 #txtnivel {
+    width: 120px;
+    font-size: 11px;
+    margin-right: 70px;
   }
 
   .item1 #btnjugar,
-  .item2 #btntc,
+ 
   .item2 #btnap,
   .item2 #btnsalir,
   .item2 #ayuda {
@@ -547,7 +574,7 @@ button:hover {
     font-size: 11px;
   }
 
-  .item2 #btntc:hover,
+
   .item2 #btnap:hover,
   .item2 #btnsalir:hover,
   .item2 #ayuda:hover {
@@ -557,6 +584,7 @@ button:hover {
 
   .item1 label {
     font-size: 11px;
+    margin-left: -70PX;
   }
 
   .topone {
@@ -587,6 +615,12 @@ button:hover {
   }
 }
 
+.cont_nose {
+  margin-top: 30px !important;
+  margin-bottom: 3px;
+}
+
+
 .palabra-display .letra {
   width: 28px;
   font-size: 20px;
@@ -607,14 +641,11 @@ button:hover {
 
 .palabra-display .letra.guessed {
   border-color: transparent;
-  margin: 10px 0 10px;
+  margin: -40px 0 10px;
   position: relative;
 }
 
-.concont_nose {
-  display: block;
-  margin-top: 20px;
-}
+
 
 .Modal {
   position: fixed;

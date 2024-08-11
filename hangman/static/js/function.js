@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
         vidas--;
         actualizarCorazones();
         if (vidas === 0) {
-          abandonarPartida(); // Aplicar la lógica de abandonar partida si se pierden todos los corazones
+          location.reload(); // Aplicar la lógica de abandonar partida si se pierden todos los corazones
         }
       }
 

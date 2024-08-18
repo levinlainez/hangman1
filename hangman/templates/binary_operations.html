@@ -1,0 +1,28 @@
+<!-- templates/binary_operations.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones Binarias</title>
+    {% load static %}
+    <script src="{% static 'js/binary_operations.js' %}" defer></script>
+</head>
+<body>
+    <h1>Operaciones Binarias</h1>
+    <form id="binaryForm">
+        <label for="binary1">Número Binario 1:</label>
+        <input type="text" id="binary1" name="binary1" required>
+        <br>
+        <label for="binary2">Número Binario 2:</label>
+        <input type="text" id="binary2" name="binary2" required>
+        <br>
+        <button type="submit">Calcular</button>
+    </form>
+
+    <div id="results">
+        <p id="sumResult"></p>
+        <p id="productResult"></p>
+    </div>
+</body>
+</html>

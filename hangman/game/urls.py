@@ -6,13 +6,14 @@ from .views import (
     PalabrasAhorcadoListView, PalabrasAhorcadoDetailView,
     PuntuacionesListView, PuntuacionesDetailView, PuntuacionesCreateView, PuntuacionesUpdateView,
     JuegoListView, JuegoDetailView, JuegoCreateView, JuegoUpdateView,CategoriaDeleteView,
-    IntentosListView, IntentosDetailView, IntentosCreateView, IntentosUpdateView,CategoriaCreateView,CategoriaCreateView, obtener_pista,reset_palabras_usadas, register, login
+    IntentosListView, IntentosDetailView, IntentosCreateView, IntentosUpdateView,CategoriaCreateView,CategoriaCreateView, obtener_pista,reset_palabras_usadas, register, login, binary_operations
 )
 
 urlpatterns = [
     path('game/', home, name='home'),
 
     path('obtener_pista/', obtener_pista, name='obtener_pista'),
+    path('operaciones_binarias/', binary_operations, name='binary_operations'),
     path('reset_palabras_usadas/', reset_palabras_usadas, name='reset_palabras_usadas'),
     path('Categoria/', CategoriaListView.as_view(), name='categoria_list'),
     path('Categoria/<int:pk>/', CategoriaDetailView.as_view(), name='categoria_detail'),

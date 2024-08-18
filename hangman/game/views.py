@@ -35,6 +35,9 @@ def home(request):
         'intentos': intentos
     })
 
+def binary_operations(request):
+    return render(request, 'binary_operations.html')
+
 def obtener_pista(request):
     categoria_id = request.GET.get('categoria_id')
     dificultad_id = request.GET.get('dificultad_id')
